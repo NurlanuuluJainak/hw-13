@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from "styled-components";
+import "./App.css";
+import { Basket } from "./components/basket/Basket";
+import { Header } from "./components/header/Header";
+import { Meals } from "./components/meals/Meals";
+import { Summary } from "./components/summary/Summary";
+import { useState } from "react";
+import { BasketProvider } from "./store/BasketContext";
 
 function App() {
+  const [isBasket,setBasket] = useState(false)
+   
+  const basketHandler = () => {
+   setBasket(prev => !prev )
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BasketProvider>
+
+      <Header onBasket={basketHandler} />
+      <Content>
+        <Summary />
+        <Meals />
+        {isBasket && <Basket onClose={basketHandler} />}
+      </Content>
+    </BasketProvider>
   );
 }
 
 export default App;
+
+const Content = styled.div`
+  margin-top: 101px;
+`;
