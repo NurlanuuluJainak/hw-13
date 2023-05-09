@@ -6,6 +6,7 @@ import { useContext } from 'react'
 import { BasketContext } from '../../store/BasketContext'
 
 export const MealItemForm = ({id,title,price}) => {
+
   const [amount,setAmount] = useState(1)
 
   const {addToBasket} = useContext(BasketContext)

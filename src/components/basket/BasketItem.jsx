@@ -3,14 +3,9 @@ import { Button } from '../UI/Button'
 import styled from 'styled-components'
 import { BasketContext } from '../../store/BasketContext'
 
-// import {ReactComponent as IconPlus} from '../../papkaImgicon/icons/plus.svg'
-// import {ReactComponent as IconMinus} from '../../papkaImgicon/icons/minus.svg'
-
 
 export const BasketItem = ({title,price,amount,id}) => {
-  console.log(amount);
  const {increment,decrement} = useContext(BasketContext)
- 
   return (
     <Container>
         <Title>{title}</Title>
